@@ -3,17 +3,19 @@ import {AiTwotoneEdit} from 'react-icons/ai'
 import {MdDelete} from 'react-icons/md'
 import AddRecipeModel from "./AddRecipeModel.jsx";
 import {useState} from "react";
+import {useGlobalRecipe} from "../contexts/recipeContext.jsx";
 
 const RecipeCard = ({recipe}) => {
     const [isAddRecipeModel, setIsAddRecipeModel] = useState(false)
     const navigate = useNavigate()
+    const {deleteRecipe} = useGlobalRecipe()
 
     return (
         <>
             <div className={'recipe-card w-60 p-2 shadow shadow-black/40 rounded relative'}>
                 <div className="edit-delete-icon absolute flex gap-2 text-2xl bg-white right-0">
                     <AiTwotoneEdit className={'cursor-pointer'} onClick={()=>setIsAddRecipeModel(true)}/>
-                    <MdDelete className={'cursor-pointer'}/>
+                    <MdDelete className={'cursor-pointer'} onClick={()=>deleteRecipe(recipe.id)}/>
                 </div>
                 <img src={recipe.mediaUrl} alt="recipe-img" className={'w-full aspect-square rounded cursor-pointer'} onClick={()=>navigate(`/recipe-detail/${recipe.id}`)}/>
                 <h1 className={'text-lg font-bold line-clamp-1'}>{recipe.recipeName}</h1>

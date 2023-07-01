@@ -39,8 +39,12 @@ const RecipeProvider = ({children}) => {
         setAllRecipes(prevState => [...prevState, {id: uuid(), ...recipe}])
     }
 
+    const deleteRecipe = (recipeId) => {
+        setAllRecipes(prevState => prevState.filter(recipe => recipe.id !== recipeId))
+    }
+
     return(
-        <recipeContext.Provider value={{allRecipes, recipeDetails, inputChangeHandler, addRecipe, inputData, setInputData}}>
+        <recipeContext.Provider value={{allRecipes, recipeDetails, inputChangeHandler, addRecipe, inputData, setInputData, deleteRecipe}}>
             {children}
         </recipeContext.Provider>
     )

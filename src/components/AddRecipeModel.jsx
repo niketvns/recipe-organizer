@@ -15,6 +15,15 @@ const AddRecipeModel = ({setIsAddRecipeModel, recipe}) => {
         if(recipe){
             setInputData(recipe);
         }
+        return(()=>{
+            setInputData({
+                recipeName: '',
+                ingredients: [],
+                cookingInstructions: [],
+                cuisineType: '',
+                mediaUrl: ''
+            })
+        })
     },[])
 
     return (
@@ -27,25 +36,25 @@ const AddRecipeModel = ({setIsAddRecipeModel, recipe}) => {
                 <form onSubmit={submitHandler} className={'flex flex-col gap-2'}>
                     <label htmlFor="">
                         <input required type="text" name={'recipeName'} placeholder={'Recipe Name'}
-                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler}/>
+                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler} value={inputData.recipeName}/>
                     </label>
                     <label htmlFor="">
                         <input required type="text" name={'cuisineType'} placeholder={'Cuisine Type'}
-                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler}/>
+                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler} value={inputData.cuisineType}/>
                     </label>
                     <label htmlFor="">
                         <input required type="text" name={'mediaUrl'} placeholder={'Enter Image Url'}
-                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler}/>
+                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler} value={inputData.mediaUrl}/>
                     </label>
                     <label htmlFor="">
                         <input required type="text" name={'ingredients'}
                                placeholder={'Add Ingredients (Comma Sepereted)'}
-                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler}/>
+                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler} value={inputData.ingredients}/>
                     </label>
                     <label htmlFor="">
                         <input required type="text" name={'cookingInstructions'}
                                placeholder={'Add Instructions (Comma Sepereted)'}
-                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler}/>
+                               className={'w-full border border-black/40 p-2 rounded'} onChange={inputChangeHandler} value={inputData.cookingInstructions}/>
                     </label>
                     <button type={'submit'} className={'bg-red-600 cursor-pointer p-2 rounded text-white'}>Add</button>
                 </form>
