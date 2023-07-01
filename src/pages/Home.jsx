@@ -6,7 +6,7 @@ import {useState} from "react";
 
 const Home = () => {
     const [isAddRecipeModel, setIsAddRecipeModel] = useState(false)
-    const {allRecipes} = useGlobalRecipe()
+    const {allRecipes, filteredData} = useGlobalRecipe()
 
     return (
         <>
@@ -16,7 +16,7 @@ const Home = () => {
                     <h1 className={'text-2xl font-bold'}>All Recipies: {name}</h1>
                     <div className="all-recipe flex gap-4 flex-wrap">
                         {
-                            allRecipes.map((recipe)=>(
+                            filteredData.map((recipe)=>(
                                 <RecipeCard key={recipe.id} recipe={recipe} />
                             ))
                         }
