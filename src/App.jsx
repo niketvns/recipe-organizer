@@ -1,14 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Route, Routes} from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import RecipeDetailPage from "./pages/RecipeDetailPage.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <p className='text-center py-5 font-bold text-2xl'>Machine Coding Round - 5</p>
+      <Routes>
+          <Route path={'/'} element={<Home/>}/>
+          <Route path={'/recipe-detail/:id'} element={<RecipeDetailPage/>}/>
+      </Routes>
     </>
   )
 }
